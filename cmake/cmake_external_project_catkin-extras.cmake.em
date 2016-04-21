@@ -41,7 +41,7 @@ macro(ExternalProject_CatkinInstall PROJECT_NAME)
   message(STATUS "CATKIN_INSTALL_PREFIX: ${CATKIN_INSTALL_PREFIX}")
   message(STATUS "CATKIN_INSTALL: ${CATKIN_INSTALL}")
 
-  if (${CATKIN_INSTALL} STREQUAL "True")
+  if ("${CATKIN_INSTALL}" STREQUAL "True")
     message(STATUS "Package marked for installation.")
     ExternalProject_Add_Step(${PROJECT_NAME} 
       catkin_install
