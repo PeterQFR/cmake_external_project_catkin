@@ -30,9 +30,10 @@ macro(ExternalProject_CatkinInstall PROJECT_NAME)
   set(CATKIN_INSTALL "False")
   if (DEFINED CATKIN_TOOLS_AVAILABLE)
     message(STATUS "catkin is available (${CATKIN_TOOLS_AVAILABLE})")
-    exec_program("catkin config  | grep 'Install Packages:' | tr -s ' ' | cut -c19-"
+    exec_program("catkin config  | grep 'Install Space:' |  awk '$3 == "[exists]" {print "True"}' " 
       OUTPUT_VARIABLE CATKIN_INSTALL
       )
+    message(STATUS "Catkin Install Variable: (${CATKIN_INSTALL})")
   else ()
     message(AUTHOR_WARNING "catkin tools not installed; add another approach to check for enabled install;")
   endif ()
